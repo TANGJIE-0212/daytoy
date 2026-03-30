@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DayToy · Playground for New Ideas</title>
+  <meta name="description" content="DayToy is a playground for fresh ideas, useful products, and new tools worth building every day." />
+  <link rel="icon" type="image/svg+xml" href="./favicon-options/favicon-playground.svg" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+            display: ['Space Grotesk', 'Plus Jakarta Sans', 'system-ui', 'sans-serif']
+          },
+          boxShadow: {
+            soft: '0 18px 60px rgba(31, 41, 55, 0.08)',
+            card: '0 10px 30px rgba(15, 23, 42, 0.06)'
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f7f3ec;
+      --panel: rgba(255, 255, 255, 0.8);
+      --panel-strong: #fffdf9;
+      --line: rgba(120, 113, 108, 0.16);
+      --text: #1f2937;
+      --muted: #6b7280;
+      --accent: #d97706;
+      --accent-soft: #fff3e0;
+      --moss: #dbe8df;
+      --sky: #dde8f5;
+      --rose: #f4d8d1;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background:
+        radial-gradient(circle at top left, rgba(221, 232, 245, 0.95), transparent 33%),
+        radial-gradient(circle at 90% 14%, rgba(244, 216, 209, 0.72), transparent 26%),
+        linear-gradient(180deg, #f8f4ee 0%, #f7f3ec 42%, #f3efe7 100%);
+      color: var(--text);
+    }
+
+    .site-shell {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .site-shell::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(rgba(120, 113, 108, 0.045) 1px, transparent 1px), linear-gradient(90deg, rgba(120, 113, 108, 0.045) 1px, transparent 1px);
+      background-size: 36px 36px;
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.35), transparent 82%);
+      pointer-events: none;
+    }
+
+    .grain {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.22;
+      background-image: radial-gradient(rgba(17, 24, 39, 0.08) 0.65px, transparent 0.65px);
+      background-size: 14px 14px;
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.28), transparent 88%);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      padding: 0.5rem 0.9rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.62);
+      box-shadow: 0 8px 24px rgba(148, 163, 184, 0.08);
+      color: #4b5563;
+      backdrop-filter: blur(14px);
+    }
+
+    .eyebrow::before {
+      content: '';
+      width: 0.45rem;
+      height: 0.45rem;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
+      box-shadow: 0 0 0 6px rgba(245, 158, 11, 0.12);
+    }
+
+    .hero-title {
+      font-family: 'Space Grotesk', 'Plus Jakarta Sans', system-ui, sans-serif;
+      font-size: clamp(3.5rem, 10vw, 7rem);
+      line-height: 0.94;
+      letter-spacing: -0.06em;
+    }
+
+    .hero-emphasis {
+      color: #8a5b15;
+    }
+
+    .brand-lockup {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.9rem;
+    }
+
+    .brand-mark {
+      width: 2.9rem;
+      height: 2.9rem;
+      flex-shrink: 0;
+      display: block;
+      filter: drop-shadow(0 16px 28px rgba(217, 119, 6, 0.16));
+    }
+
+    .brand-name {
+      display: block;
+      font-family: 'Space Grotesk', 'Plus Jakarta Sans', system-ui, sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: -0.05em;
+      color: #111827;
+      line-height: 1;
+    }
+
+    .brand-tagline {
+      display: block;
+      margin-top: 0.22rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #78716c;
+      line-height: 1;
+    }
+
+    .glass-panel {
+      border: 1px solid rgba(255, 255, 255, 0.72);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.76), rgba(255, 253, 249, 0.92));
+      box-shadow: 0 18px 60px rgba(17, 24, 39, 0.07);
+      backdrop-filter: blur(16px);
+    }
+
+    .feature-chip {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.7rem 1rem;
+      background: rgba(255, 255, 255, 0.56);
+      color: #4b5563;
+    }
+
+    .section-card {
+      position: relative;
+      border: 1px solid rgba(120, 113, 108, 0.14);
+      background: rgba(255, 253, 249, 0.82);
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+      transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+    }
+
+    .section-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 44px rgba(15, 23, 42, 0.09);
+      border-color: rgba(217, 119, 6, 0.26);
+    }
+
+    .section-card::after {
+      content: '';
+      position: absolute;
+      inset: auto 1.1rem 1.1rem auto;
+      width: 0.65rem;
+      height: 0.65rem;
+      border-radius: 999px;
+      background: rgba(217, 119, 6, 0.12);
+    }
+
+    .metric-card {
+      border: 1px solid rgba(120, 113, 108, 0.12);
+      background: rgba(255, 255, 255, 0.58);
+      backdrop-filter: blur(12px);
+    }
+
+    .section-kicker {
+      font-size: 0.76rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #a16207;
+    }
+
+    .section-title {
+      font-family: 'Space Grotesk', 'Plus Jakarta Sans', system-ui, sans-serif;
+      letter-spacing: -0.045em;
+    }
+
+    .contact-input {
+      border: 1px solid rgba(120, 113, 108, 0.16);
+      background: rgba(255, 255, 255, 0.74);
+      transition: border-color 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
+    }
+
+    .contact-input:focus {
+      outline: none;
+      border-color: rgba(217, 119, 6, 0.45);
+      box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.12);
+      background: rgba(255, 255, 255, 0.96);
+    }
+
+    .cta-primary {
+      background: #1f2937;
+      color: #f9fafb;
+      transition: transform 0.18s ease, background-color 0.18s ease;
+    }
+
+    .cta-primary:hover {
+      transform: translateY(-1px);
+      background: #111827;
+    }
+
+    .cta-secondary {
+      border: 1px solid rgba(120, 113, 108, 0.18);
+      background: rgba(255, 255, 255, 0.6);
+      transition: transform 0.18s ease, border-color 0.18s ease, background-color 0.18s ease;
+    }
+
+    .cta-secondary:hover {
+      transform: translateY(-1px);
+      border-color: rgba(120, 113, 108, 0.32);
+      background: rgba(255, 255, 255, 0.88);
+    }
+  </style>
+</head>
+<body class="font-sans text-gray-900 antialiased">
+  <div class="site-shell min-h-screen">
+    <div class="grain"></div>
+
+    <nav class="fixed top-0 w-full z-50">
+      <div class="mx-auto mt-4 flex max-w-6xl items-center justify-between rounded-full border border-white/60 bg-white/68 px-5 py-3 shadow-soft backdrop-blur-md sm:px-6">
+        <a href="#" class="brand-lockup">
+          <img src="./favicon-options/favicon-playground.svg" alt="DayToy logo" class="brand-mark" />
+          <span>
+            <span class="brand-name">DayToy</span>
+            <span class="brand-tagline">Playground for Ideas</span>
+          </span>
+        </a>
+        <div class="hidden items-center gap-6 text-sm text-stone-600 sm:flex">
+          <a href="#about" class="transition-colors hover:text-stone-900">About</a>
+          <a href="#projects" class="transition-colors hover:text-stone-900">Projects</a>
+          <a href="#contact" class="transition-colors hover:text-stone-900">Contact</a>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <section class="relative px-6 pt-36 pb-20 sm:pt-40 sm:pb-24">
+        <div class="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[minmax(0,1.15fr)_22rem] lg:items-end">
+          <div>
+            <div class="eyebrow mb-7 text-sm font-medium">Small products. Clear taste. Real use.</div>
+            <h1 class="hero-title mb-7 max-w-4xl text-stone-900">
+              Building calm,
+              <span class="hero-emphasis">useful things</span>
+              for curious people.
+            </h1>
+            <p class="max-w-2xl text-lg leading-8 text-stone-600 sm:text-xl">
+              DayToy is where I shape experiments into products with a point of view. Less AI theater, more thoughtful tools, learning systems, and digital objects people might actually keep using.
+            </p>
+            <div class="mt-10 flex flex-col gap-3 sm:flex-row">
+              <a href="#projects" class="cta-primary inline-flex items-center justify-center rounded-full px-6 py-3.5 font-medium">Browse projects</a>
+              <a href="#contact" class="cta-secondary inline-flex items-center justify-center rounded-full px-6 py-3.5 font-medium text-stone-700">Start a conversation</a>
+            </div>
+            <div class="mt-8 flex flex-wrap gap-3 text-sm">
+              <span class="feature-chip">Product experiments</span>
+              <span class="feature-chip">Creative utilities</span>
+              <span class="feature-chip">Automation systems</span>
+            </div>
+          </div>
+
+          <aside class="glass-panel rounded-[2rem] p-5 sm:p-6">
+            <div class="mb-5 flex items-center justify-between text-sm text-stone-500">
+              <span>Current focus</span>
+              <span>2026</span>
+            </div>
+            <div class="space-y-4">
+              <div class="rounded-3xl border border-white/80 bg-[var(--accent-soft)] p-5">
+                <p class="mb-2 text-xs uppercase tracking-[0.18em] text-amber-700">Now shaping</p>
+                <h2 class="section-title text-2xl font-semibold text-stone-900">AI tools that feel like products, not demos.</h2>
+              </div>
+              <div class="rounded-3xl border border-stone-200/70 bg-white/72 p-5">
+                <p class="text-sm leading-7 text-stone-600">I care about fit, rhythm, and usefulness. The goal is not to sound futuristic. The goal is to make software feel immediately worth keeping.</p>
+              </div>
+              <div class="grid grid-cols-2 gap-3">
+                <div class="metric-card rounded-2xl p-4">
+                  <div class="text-2xl font-semibold text-stone-900">7+</div>
+                  <div class="mt-1 text-sm text-stone-500">product directions</div>
+                </div>
+                <div class="metric-card rounded-2xl p-4">
+                  <div class="text-2xl font-semibold text-stone-900">1</div>
+                  <div class="mt-1 text-sm text-stone-500">playground, many forms</div>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="px-6 pb-8">
+        <div class="mx-auto grid max-w-6xl gap-4 md:grid-cols-3">
+          <div class="metric-card rounded-[1.75rem] p-5">
+            <p class="text-xs uppercase tracking-[0.16em] text-stone-500">Taste</p>
+            <p class="mt-3 text-lg font-semibold text-stone-900">Soft visual systems with a clear point of view.</p>
+          </div>
+          <div class="metric-card rounded-[1.75rem] p-5">
+            <p class="text-xs uppercase tracking-[0.16em] text-stone-500">Workflow</p>
+            <p class="mt-3 text-lg font-semibold text-stone-900">Automation where friction is real, not imagined.</p>
+          </div>
+          <div class="metric-card rounded-[1.75rem] p-5">
+            <p class="text-xs uppercase tracking-[0.16em] text-stone-500">Output</p>
+            <p class="mt-3 text-lg font-semibold text-stone-900">Apps, mini tools, browser ideas, and research interfaces.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="px-6 py-24">
+        <div class="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+          <div>
+            <p class="section-kicker mb-3 font-medium">About</p>
+            <h2 class="section-title text-4xl font-semibold text-stone-900 sm:text-5xl">A builder interested in what feels quietly inevitable.</h2>
+          </div>
+          <div class="rounded-[2rem] border border-stone-200/70 bg-white/64 p-7 shadow-card backdrop-blur-sm sm:p-8">
+            <p class="text-lg leading-8 text-stone-600">
+              I work across agent systems, browser automation, learning products, and developer tooling, but the filter stays the same: if it does not improve a real workflow or create real delight, it does not belong.
+            </p>
+            <p class="mt-5 text-lg leading-8 text-stone-600">
+              Based in China. Open to collaborations that need both taste and execution.
+            </p>
+            <div class="mt-8 flex flex-wrap gap-2.5 text-sm text-stone-700">
+              <span class="rounded-full border border-stone-200 bg-white px-3.5 py-2">TypeScript</span>
+              <span class="rounded-full border border-stone-200 bg-white px-3.5 py-2">Node.js</span>
+              <span class="rounded-full border border-stone-200 bg-white px-3.5 py-2">Python</span>
+              <span class="rounded-full border border-stone-200 bg-white px-3.5 py-2">Playwright</span>
+              <span class="rounded-full border border-stone-200 bg-white px-3.5 py-2">LLM / MCP</span>
+              <span class="rounded-full border border-stone-200 bg-white px-3.5 py-2">Cloudflare Workers</span>
+              <span class="rounded-full border border-stone-200 bg-white px-3.5 py-2">WSL / Linux</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="px-6 py-24">
+        <div class="mx-auto max-w-6xl">
+          <div class="mb-12 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p class="section-kicker mb-3 font-medium">Projects</p>
+              <h2 class="section-title text-4xl font-semibold text-stone-900 sm:text-5xl">A growing shelf of things I want to exist.</h2>
+            </div>
+            <p class="max-w-md text-base leading-7 text-stone-500">Grouped less like a resume and more like a product shelf: systems, apps, small utilities, and web concepts in progress.</p>
+          </div>
+
+          <div class="grid gap-6 lg:grid-cols-12">
+            <article class="section-card rounded-[2rem] p-7 lg:col-span-7">
+              <div class="mb-6 flex items-start justify-between gap-4">
+                <div>
+                  <p class="text-xs uppercase tracking-[0.16em] text-amber-700">Systems</p>
+                  <h3 class="mt-2 text-2xl font-semibold text-stone-900">Automation, reading, and structured workflows</h3>
+                </div>
+                <span class="rounded-full bg-[var(--sky)] px-3 py-1 text-xs font-medium text-slate-700">Practical core</span>
+              </div>
+              <div class="grid gap-4 md:grid-cols-2">
+                <div class="rounded-[1.5rem] border border-stone-200/70 bg-white/75 p-5">
+                  <h4 class="text-lg font-semibold text-stone-900">Interview Automation</h4>
+                  <p class="mt-2 text-sm leading-7 text-stone-500">Async interview workflow that plans questions, creates sessions, fetches artifacts, and scores candidates.</p>
+                </div>
+                <div class="rounded-[1.5rem] border border-stone-200/70 bg-white/75 p-5">
+                  <h4 class="text-lg font-semibold text-stone-900">AI Paper Reader</h4>
+                  <p class="mt-2 text-sm leading-7 text-stone-500">A reading workflow for turning dense research papers into clearer ideas, useful summaries, and product takeaways.</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="section-card rounded-[2rem] p-7 lg:col-span-5">
+              <div class="mb-6 flex items-start justify-between gap-4">
+                <div>
+                  <p class="text-xs uppercase tracking-[0.16em] text-amber-700">Apps</p>
+                  <h3 class="mt-2 text-2xl font-semibold text-stone-900">Consumer ideas with personality</h3>
+                </div>
+                <span class="rounded-full bg-[var(--rose)] px-3 py-1 text-xs font-medium text-stone-700">Playful layer</span>
+              </div>
+              <div class="space-y-4">
+                <div class="rounded-[1.5rem] border border-stone-200/70 bg-white/75 p-5">
+                  <div class="flex items-start justify-between gap-4">
+                    <div>
+                      <h4 class="text-lg font-semibold text-stone-900">Draco AI</h4>
+                      <p class="mt-2 text-sm leading-7 text-stone-500">An AI learning app built to make studying feel more adaptive, interactive, and easier to stick with.</p>
+                    </div>
+                    <a href="https://github.com/TANGJIE-0212/Draco-AI" target="_blank" rel="noopener" class="rounded-full border border-stone-200 px-3 py-1.5 text-xs font-medium text-stone-700 transition-colors hover:border-stone-400 hover:text-stone-900">GitHub</a>
+                  </div>
+                </div>
+                <div class="rounded-[1.5rem] border border-stone-200/70 bg-white/75 p-5">
+                  <h4 class="text-lg font-semibold text-stone-900">Forget It</h4>
+                  <p class="mt-2 text-sm leading-7 text-stone-500">A playful mix of mysticism and personality testing, designed as an entertaining self-discovery experience.</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="section-card rounded-[2rem] p-7 lg:col-span-4">
+              <p class="text-xs uppercase tracking-[0.16em] text-amber-700">Focus tools</p>
+              <h3 class="mt-2 text-2xl font-semibold text-stone-900">Designed for routines</h3>
+              <div class="mt-6 space-y-4">
+                <div class="rounded-[1.5rem] border border-stone-200/70 bg-white/75 p-5">
+                  <h4 class="text-lg font-semibold text-stone-900">Lock Screen + White Noise</h4>
+                  <p class="mt-2 text-sm leading-7 text-stone-500">A focus app that pairs a calm lock-screen experience with ambient sound for study and deep work.</p>
+                </div>
+                <div class="rounded-[1.5rem] border border-stone-200/70 bg-white/75 p-5">
+                  <h4 class="text-lg font-semibold text-stone-900">Full Textbook Set for iPad</h4>
+                  <p class="mt-2 text-sm leading-7 text-stone-500">An iPad-first learning product that organizes entire textbook sets into a cleaner digital workflow.</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="section-card rounded-[2rem] p-7 lg:col-span-4">
+              <p class="text-xs uppercase tracking-[0.16em] text-amber-700">Mini programs</p>
+              <h3 class="mt-2 text-2xl font-semibold text-stone-900">Daily-use utilities</h3>
+              <div class="mt-6 space-y-4">
+                <div class="rounded-[1.5rem] border border-stone-200/70 bg-white/75 p-5">
+                  <h4 class="text-lg font-semibold text-stone-900">What Should I Eat Today?</h4>
+                  <p class="mt-2 text-sm leading-7 text-stone-500">A lightweight decision helper for the daily question everyone ends up asking.</p>
+                </div>
+                <div class="rounded-[1.5rem] border border-stone-200/70 bg-white/75 p-5">
+                  <h4 class="text-lg font-semibold text-stone-900">Mood-Based Wallpaper Generator</h4>
+                  <p class="mt-2 text-sm leading-7 text-stone-500">Generates a fresh wallpaper based on mood, tone, and the kind of visual atmosphere you want that day.</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="section-card rounded-[2rem] p-7 lg:col-span-4">
+              <p class="text-xs uppercase tracking-[0.16em] text-amber-700">Browser ideas</p>
+              <h3 class="mt-2 text-2xl font-semibold text-stone-900">Quiet layers on top of the web</h3>
+              <div class="mt-6 rounded-[1.5rem] border border-stone-200/70 bg-white/75 p-5">
+                <h4 class="text-lg font-semibold text-stone-900">Comic Translator</h4>
+                <p class="mt-2 text-sm leading-7 text-stone-500">A browser extension that helps translate comics more naturally while respecting layout and reading flow.</p>
+              </div>
+            </article>
+
+            <article class="section-card rounded-[2rem] p-7 lg:col-span-4">
+              <p class="text-xs uppercase tracking-[0.16em] text-amber-700">Web concepts</p>
+              <h3 class="mt-2 text-2xl font-semibold text-stone-900">Bridge playful worlds</h3>
+              <div class="mt-6 rounded-[1.5rem] border border-stone-200/70 bg-white/75 p-5">
+                <h4 class="text-lg font-semibold text-stone-900">Minecraft to LEGO</h4>
+                <p class="mt-2 text-sm leading-7 text-stone-500">A site that reimagines Minecraft creations as LEGO-style builds and playful physical-world concepts.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="px-6 py-24">
+        <div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.8fr_1.2fr]">
+          <div>
+            <p class="section-kicker mb-3 font-medium">Contact</p>
+            <h2 class="section-title text-4xl font-semibold text-stone-900 sm:text-5xl">If something here feels aligned, let’s talk.</h2>
+            <p class="mt-5 max-w-md text-lg leading-8 text-stone-600">Collaborations, experiments, product ideas, or simply a sharp note from the outside all belong here.</p>
+          </div>
+
+          <div class="glass-panel rounded-[2rem] p-7 sm:p-8">
+            <form id="contactForm" class="space-y-5">
+              <div>
+                <label class="mb-1.5 block text-sm font-medium text-stone-700">Name</label>
+                <input type="text" name="name" required placeholder="Your name" class="contact-input w-full rounded-2xl px-4 py-3.5 text-stone-900" />
+              </div>
+              <div>
+                <label class="mb-1.5 block text-sm font-medium text-stone-700">Email</label>
+                <input type="email" name="email" required placeholder="you@example.com" class="contact-input w-full rounded-2xl px-4 py-3.5 text-stone-900" />
+              </div>
+              <div>
+                <label class="mb-1.5 block text-sm font-medium text-stone-700">Message</label>
+                <textarea name="message" required rows="5" placeholder="What's on your mind?" class="contact-input w-full resize-none rounded-2xl px-4 py-3.5 text-stone-900"></textarea>
+              </div>
+              <button type="submit" id="submitBtn" class="cta-primary w-full rounded-full py-3.5 font-medium disabled:cursor-not-allowed disabled:opacity-50">Send message</button>
+              <p id="formStatus" class="hidden text-center text-sm"></p>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="px-6 py-10">
+      <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 border-t border-stone-200/70 pt-6 text-sm text-stone-500 sm:flex-row">
+        <span>© 2026 Tajie Tang</span>
+        <div class="flex flex-wrap items-center gap-5">
+          <a href="mailto:contact@daytoy.online" class="transition-colors hover:text-stone-900">contact@daytoy.online</a>
+          <a href="https://github.com/TANGJIE-0212" target="_blank" rel="noopener" class="transition-colors hover:text-stone-900">GitHub</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const form = document.getElementById('contactForm');
+    const btn = document.getElementById('submitBtn');
+    const status = document.getElementById('formStatus');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+      status.className = 'text-sm text-center hidden';
+
+      const body = {
+        name: form.name.value.trim(),
+        email: form.email.value.trim(),
+        message: form.message.value.trim(),
+      };
+
+      try {
+        const res = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body),
+        });
+        const data = await res.json();
+
+        if (res.ok) {
+          status.textContent = '✓ Message sent! I\'ll get back to you soon.';
+          status.className = 'text-sm text-center text-emerald-700';
+          form.reset();
+        } else {
+          throw new Error(data.error || 'Unknown error');
+        }
+      } catch (err) {
+        status.textContent = `Failed to send: ${err.message}`;
+        status.className = 'text-sm text-center text-rose-600';
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Send message';
+        status.classList.remove('hidden');
+      }
+    });
+  </script>
+</body>
+</html>
