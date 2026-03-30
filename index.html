@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tajie Tang · Builder</title>
-  <meta name="description" content="Personal site of Tajie Tang — building AI-powered tools and workflows." />
+  <title>DayToy · Playground for New Ideas</title>
+  <meta name="description" content="DayToy is a playground for fresh ideas, useful products, and new tools worth building every day." />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -32,6 +32,57 @@
       transform: translateY(-4px);
       box-shadow: 0 20px 40px rgba(0,0,0,0.08);
     }
+    .brand-lockup {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+    .brand-mark {
+      width: 2.6rem;
+      height: 2.6rem;
+      border-radius: 0.9rem;
+      background: radial-gradient(circle at 30% 30%, #fde68a 0%, #f59e0b 28%, #f97316 54%, #4f46e5 100%);
+      position: relative;
+      box-shadow: 0 12px 30px rgba(79, 70, 229, 0.2);
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .brand-mark::before {
+      content: '';
+      position: absolute;
+      inset: 0.38rem;
+      border: 2px solid rgba(255, 255, 255, 0.7);
+      border-radius: 0.75rem;
+    }
+    .brand-mark::after {
+      content: '';
+      position: absolute;
+      width: 0.62rem;
+      height: 0.62rem;
+      right: 0.32rem;
+      top: 0.32rem;
+      border-radius: 999px;
+      background: #fff7ed;
+      box-shadow: -1.1rem 1.15rem 0 rgba(255, 247, 237, 0.9);
+    }
+    .brand-wordmark {
+      line-height: 1;
+    }
+    .brand-name {
+      display: block;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: #111827;
+    }
+    .brand-tagline {
+      display: block;
+      font-size: 0.72rem;
+      color: #6b7280;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: 0.2rem;
+    }
   </style>
 </head>
 <body class="font-sans bg-white text-gray-900 antialiased">
@@ -39,7 +90,13 @@
   <!-- Nav -->
   <nav class="fixed top-0 w-full bg-white/80 backdrop-blur-md border-b border-gray-100 z-50">
     <div class="max-w-4xl mx-auto px-6 h-16 flex items-center justify-between">
-      <span class="font-semibold text-gray-900">daytoy.online</span>
+      <a href="#" class="brand-lockup">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-wordmark">
+          <span class="brand-name">DayToy</span>
+          <span class="brand-tagline">Playground for Ideas</span>
+        </span>
+      </a>
       <div class="flex gap-6 text-sm text-gray-600">
         <a href="#about" class="hover:text-gray-900 transition-colors">About</a>
         <a href="#projects" class="hover:text-gray-900 transition-colors">Projects</a>
@@ -51,14 +108,15 @@
   <!-- Hero -->
   <section class="pt-40 pb-24 px-6">
     <div class="max-w-4xl mx-auto">
-      <p class="text-sm font-medium text-indigo-500 mb-4 tracking-wide uppercase">Hi, I'm</p>
+      <p class="text-sm font-medium text-indigo-500 mb-4 tracking-[0.18em] uppercase">A giant playground for fresh ideas</p>
       <h1 class="text-5xl sm:text-6xl font-bold leading-tight mb-6">
-        Tajie Tang<br />
-        <span class="gradient-text">Building with AI.</span>
+        DayToy turns curiosity<br />
+        <span class="gradient-text">into useful new toys.</span>
       </h1>
-      <p class="text-xl text-gray-500 max-w-xl leading-relaxed mb-10">
-        I build AI-powered tools and automation workflows —
-        from interview pipelines to intelligent agents.
+      <p class="text-xl text-gray-500 max-w-2xl leading-relaxed mb-10">
+        DayToy is built on a simple belief: the world is a giant playground.
+        Every day should uncover a fresh idea, a sharper workflow, or a new toy worth building.
+        This site is where I turn that energy into useful products, experiments, and tools.
         Always shipping, always learning.
       </p>
       <div class="flex gap-4">
