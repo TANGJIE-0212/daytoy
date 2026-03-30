@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tajie Tang · Builder</title>
+  <meta name="description" content="Personal site of Tajie Tang — building AI-powered tools and workflows." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    html { scroll-behavior: smooth; }
+    .gradient-text {
+      background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .card-hover {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    }
+  </style>
+</head>
+<body class="font-sans bg-white text-gray-900 antialiased">
+
+  <!-- Nav -->
+  <nav class="fixed top-0 w-full bg-white/80 backdrop-blur-md border-b border-gray-100 z-50">
+    <div class="max-w-4xl mx-auto px-6 h-16 flex items-center justify-between">
+      <span class="font-semibold text-gray-900">daytoy.online</span>
+      <div class="flex gap-6 text-sm text-gray-600">
+        <a href="#about" class="hover:text-gray-900 transition-colors">About</a>
+        <a href="#projects" class="hover:text-gray-900 transition-colors">Projects</a>
+        <a href="#contact" class="hover:text-gray-900 transition-colors">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="pt-40 pb-24 px-6">
+    <div class="max-w-4xl mx-auto">
+      <p class="text-sm font-medium text-indigo-500 mb-4 tracking-wide uppercase">Hi, I'm</p>
+      <h1 class="text-5xl sm:text-6xl font-bold leading-tight mb-6">
+        Tajie Tang<br />
+        <span class="gradient-text">Building with AI.</span>
+      </h1>
+      <p class="text-xl text-gray-500 max-w-xl leading-relaxed mb-10">
+        I build AI-powered tools and automation workflows —
+        from interview pipelines to intelligent agents.
+        Always shipping, always learning.
+      </p>
+      <div class="flex gap-4">
+        <a href="#projects"
+           class="inline-flex items-center px-6 py-3 bg-indigo-600 text-white rounded-lg font-medium hover:bg-indigo-700 transition-colors">
+          See my work
+        </a>
+        <a href="#contact"
+           class="inline-flex items-center px-6 py-3 border border-gray-200 rounded-lg font-medium hover:border-gray-400 transition-colors">
+          Get in touch
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="py-24 px-6 bg-gray-50">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl font-bold mb-12">About</h2>
+      <div class="grid sm:grid-cols-2 gap-12 items-start">
+        <div>
+          <p class="text-gray-600 leading-relaxed mb-4">
+            I'm a builder focused on making AI practical for real workflows.
+            My current work spans agentic systems, browser automation, and
+            developer tooling — with a focus on things that actually ship.
+          </p>
+          <p class="text-gray-600 leading-relaxed">
+            Based in China. Open to collaboration and interesting problems.
+          </p>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1.5 bg-white border border-gray-200 rounded-full text-sm">TypeScript</span>
+          <span class="px-3 py-1.5 bg-white border border-gray-200 rounded-full text-sm">Node.js</span>
+          <span class="px-3 py-1.5 bg-white border border-gray-200 rounded-full text-sm">Python</span>
+          <span class="px-3 py-1.5 bg-white border border-gray-200 rounded-full text-sm">Playwright</span>
+          <span class="px-3 py-1.5 bg-white border border-gray-200 rounded-full text-sm">LLM / MCP</span>
+          <span class="px-3 py-1.5 bg-white border border-gray-200 rounded-full text-sm">Cloudflare Workers</span>
+          <span class="px-3 py-1.5 bg-white border border-gray-200 rounded-full text-sm">WSL / Linux</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="py-24 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl font-bold mb-12">Projects</h2>
+      <div class="grid sm:grid-cols-2 gap-6">
+
+        <div class="card-hover p-6 border border-gray-100 rounded-2xl bg-white shadow-sm">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 bg-indigo-50 rounded-xl flex items-center justify-center text-xl">🦀</div>
+            <h3 class="font-semibold text-lg">OpenClaw</h3>
+          </div>
+          <p class="text-gray-500 text-sm leading-relaxed mb-4">
+            Personal AI gateway running on WSL — manages agents, sessions, browser relay,
+            and auto-restarts on login via Windows Scheduled Task.
+          </p>
+          <span class="text-xs font-medium px-2 py-1 bg-indigo-50 text-indigo-600 rounded-full">Infra · WSL · PowerShell</span>
+        </div>
+
+        <div class="card-hover p-6 border border-gray-100 rounded-2xl bg-white shadow-sm">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 bg-purple-50 rounded-xl flex items-center justify-center text-xl">🎙️</div>
+            <h3 class="font-semibold text-lg">Interview Automation</h3>
+          </div>
+          <p class="text-gray-500 text-sm leading-relaxed mb-4">
+            MCP server that turns a JD + resume into an async interview:
+            parses, generates questions, creates the ListenLab session,
+            fetches transcripts, and scores the candidate.
+          </p>
+          <span class="text-xs font-medium px-2 py-1 bg-purple-50 text-purple-600 rounded-full">MCP · Playwright · LLM</span>
+        </div>
+
+        <!-- placeholder card for future projects -->
+        <div class="card-hover p-6 border border-dashed border-gray-200 rounded-2xl bg-gray-50 flex flex-col items-center justify-center text-center min-h-[160px]">
+          <p class="text-gray-400 text-sm">More coming soon...</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="py-24 px-6 bg-gray-50">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl font-bold mb-4">Contact</h2>
+      <p class="text-gray-500 mb-10">Want to collaborate or just say hi? Send me a message.</p>
+
+      <form id="contactForm" class="max-w-lg space-y-5">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1.5">Name</label>
+          <input type="text" name="name" required placeholder="Your name"
+                 class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition" />
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1.5">Email</label>
+          <input type="email" name="email" required placeholder="you@example.com"
+                 class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition" />
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1.5">Message</label>
+          <textarea name="message" required rows="5" placeholder="What's on your mind?"
+                    class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition resize-none"></textarea>
+        </div>
+        <button type="submit" id="submitBtn"
+                class="w-full py-3 bg-indigo-600 text-white rounded-lg font-medium hover:bg-indigo-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+          Send message
+        </button>
+        <p id="formStatus" class="text-sm text-center hidden"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-10 px-6 border-t border-gray-100">
+    <div class="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-gray-400">
+      <span>© 2026 Tajie Tang</span>
+      <div class="flex gap-6">
+        <a href="mailto:hi@daytoy.online" class="hover:text-gray-600 transition-colors">hi@daytoy.online</a>
+        <a href="https://github.com/TANGJIE-0212" target="_blank" rel="noopener" class="hover:text-gray-600 transition-colors">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const form = document.getElementById('contactForm');
+    const btn = document.getElementById('submitBtn');
+    const status = document.getElementById('formStatus');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+      status.className = 'text-sm text-center hidden';
+
+      const body = {
+        name: form.name.value.trim(),
+        email: form.email.value.trim(),
+        message: form.message.value.trim(),
+      };
+
+      try {
+        const res = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body),
+        });
+        const data = await res.json();
+
+        if (res.ok) {
+          status.textContent = '✓ Message sent! I\'ll get back to you soon.';
+          status.className = 'text-sm text-center text-green-600';
+          form.reset();
+        } else {
+          throw new Error(data.error || 'Unknown error');
+        }
+      } catch (err) {
+        status.textContent = `Failed to send: ${err.message}`;
+        status.className = 'text-sm text-center text-red-500';
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Send message';
+        status.classList.remove('hidden');
+      }
+    });
+  </script>
+</body>
+</html>

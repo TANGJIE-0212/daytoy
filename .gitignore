@@ -1,0 +1,4 @@
+# ignore local node_modules if you ever add tooling
+node_modules/
+.env
+.env.local
