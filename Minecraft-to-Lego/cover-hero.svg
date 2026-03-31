@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none">
+  <rect width="1200" height="630" fill="#0a0a0f"/>
+  <g stroke="#1a2032" stroke-width="1" opacity="0.5">
+    <path d="M0 38.5H1200M0 77.5H1200M0 116.5H1200M0 155.5H1200M0 194.5H1200M0 233.5H1200M0 272.5H1200M0 311.5H1200M0 350.5H1200M0 389.5H1200M0 428.5H1200M0 467.5H1200M0 506.5H1200M0 545.5H1200M0 584.5H1200"/>
+    <path d="M38.5 0V630M77.5 0V630M116.5 0V630M155.5 0V630M194.5 0V630M233.5 0V630M272.5 0V630M311.5 0V630M350.5 0V630M389.5 0V630M428.5 0V630M467.5 0V630M506.5 0V630M545.5 0V630M584.5 0V630M623.5 0V630M662.5 0V630M701.5 0V630M740.5 0V630M779.5 0V630M818.5 0V630M857.5 0V630M896.5 0V630M935.5 0V630M974.5 0V630M1013.5 0V630M1052.5 0V630M1091.5 0V630M1130.5 0V630M1169.5 0V630"/>
+  </g>
+
+  <g opacity="0.95">
+    <g transform="translate(108 289) rotate(-12)">
+      <rect width="28" height="14" fill="#4ade80"/>
+      <rect y="14" width="28" height="14" fill="#a16207"/>
+    </g>
+    <g transform="translate(1097 302) rotate(-4)">
+      <rect width="23" height="23" rx="1" fill="#67e8f9"/>
+    </g>
+    <g transform="translate(564 548) rotate(18)">
+      <rect width="30" height="15" fill="#8b5a20"/>
+      <rect x="18" y="0" width="12" height="15" fill="#4fa77c"/>
+    </g>
+  </g>
+
+  <g font-family="monospace" text-anchor="middle">
+    <line x1="428" y1="77" x2="505" y2="77" stroke="#4ade80" stroke-opacity="0.45"/>
+    <text x="600" y="83" fill="#4ade80" font-size="22" letter-spacing="4">MINECRAFT → REAL LIFE</text>
+    <line x1="695" y1="77" x2="772" y2="77" stroke="#4ade80" stroke-opacity="0.45"/>
+  </g>
+
+  <g text-anchor="middle" font-family="'Courier New', monospace" font-weight="700">
+    <text x="600" y="184" fill="#efefff" font-size="78">Your Virtual World,</text>
+    <text x="600" y="287" fill="none" stroke="#57dc8e" stroke-width="2.5" font-size="78">Now In Your Hands</text>
+    <text x="600" y="395" fill="#ffc641" font-size="86">One Brick At A</text>
+    <text x="600" y="498" fill="#ffc641" font-size="86">Time.</text>
+  </g>
+
+  <g text-anchor="middle" font-family="Arial, sans-serif" fill="#b4b0bf">
+    <text x="600" y="560" font-size="24">Upload your Minecraft schematic file and turn it into a LEGO shopping list plus 3D preview.</text>
+  </g>
+</svg>
