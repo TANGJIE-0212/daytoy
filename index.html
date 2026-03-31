@@ -695,6 +695,12 @@
       transform: scale(1.01) translateX(calc(var(--parallax-x, 0px) * 0.35));
     }
 
+    .gallery-bg--wide-screenshot {
+      inset: 0;
+      background-position: center center;
+      transform: scale(1.015) translateX(calc(var(--parallax-x, 0px) * 0.2));
+    }
+
     .gallery-overlay {
       position: absolute;
       inset: 0;
@@ -1220,9 +1226,9 @@
             </div>
 
             <div class="gallery-item">
-              <div class="gallery-card">
-                <div class="gallery-bg" style="--bg: linear-gradient(180deg, rgba(228, 230, 236, 0.95), rgba(82, 88, 98, 0.98));"></div>
-                <div class="gallery-overlay"></div>
+              <div class="gallery-card" data-live-url="https://ai.studio/apps/1361ce41-b9d6-4bff-a897-768c1a4e6400" tabindex="0" role="link" aria-label="Open Draco AI live site">
+                <div class="gallery-bg gallery-bg--wide-screenshot" style="--bg: linear-gradient(180deg, rgba(113, 185, 45, 0.06), rgba(72, 119, 28, 0.16)), url('/projects/draco-ai/cover.png');"></div>
+                <div class="gallery-overlay gallery-overlay--screenshot"></div>
                 <div class="gallery-content">
                   <div class="flex items-center gap-4 mb-4">
                     <span class="text-sm font-medium text-white/50">03</span>
@@ -1231,8 +1237,8 @@
                   <h3 class="font-display text-4xl sm:text-5xl lg:text-5xl text-white mb-4">Draco AI</h3>
                   <p class="max-w-xl text-lg text-white/70 leading-relaxed mb-8">An AI learning app shaped around adaptive study loops, lighter friction, and stronger daily return.</p>
                   <div class="flex gap-3">
-                    <span class="gallery-pill">Live</span>
-                    <span class="gallery-pill">GitHub</span>
+                    <a href="https://ai.studio/apps/1361ce41-b9d6-4bff-a897-768c1a4e6400" target="_blank" rel="noopener" class="gallery-pill" data-no-card-link="true">Live</a>
+                    <a href="https://github.com/TANGJIE-0212/Draco-AI" target="_blank" rel="noopener" class="gallery-pill" data-no-card-link="true">GitHub</a>
                   </div>
                 </div>
               </div>
